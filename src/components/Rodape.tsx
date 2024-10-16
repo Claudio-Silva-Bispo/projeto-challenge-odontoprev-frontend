@@ -8,7 +8,7 @@ const Rodape = () => {
 
     return (
         <div className="layout-footer">
-            <span className="font-medium ml-2">Relatórios gerados pela área de BI</span>
+            <span className="font-medium ml-2">Projeto Challenge OdontoPrev & FIAP - © Copyright 2024. Todos os direitos reservados a Delfos Machine.</span>
         </div>
     );
 };

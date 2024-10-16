@@ -27,7 +27,7 @@ const Menu = forwardRef<AppTopbarRef>((props, ref) => {
     return (
         <div className="layout-topbar">
             <Link href="/" className="layout-topbar-logo">
-                <span>DASHBOARD EZZE SEGUROS</span>
+                <span>DELFOS MACHINE</span>
             </Link>
 
             <button
@@ -59,38 +59,44 @@ const Menu = forwardRef<AppTopbarRef>((props, ref) => {
             {sidebarVisible && (
                 <div className="sidebar p-5 text-xl">
                     <ul>
-                        <li>
-                            <Link href="/">
-                                <i className="pi pi-home"></i> {/* Ícone para Início */}
+                        <li >
+                            <Link href="/" className='flex gap-2 items-center'>
+                                <i className="pi pi-home"></i> 
                                 Inicio
                             </Link>
                         </li>
                         <li>
-                            <Link href="/">
-                                <i className="pi pi-file"></i> {/* Ícone para Relatórios */}
-                                Relatórios
+                            <Link href="/CadastroClinica" className='flex gap-2 items-center'>
+                                <i className="pi pi-plus"></i> 
+                                Cadastro Clínica
                             </Link>
                         </li>
                         <li>
-                            <Link href="/Cadastro">
-                                <i className="pi pi-plus"></i> {/* Ícone para Cadastro */}
-                                Cadastro
+                            <Link href="/CadastroEspecialista" className='flex gap-2 items-center'>
+                                <i className="pi pi-plus"></i> 
+                                Especialista
                             </Link>
                         </li>
                         <li>
-                            <Link href="/Documentacao">
-                                <i className="pi pi-book"></i> {/* Ícone para Documentações */}
-                                Documentações
+                            <Link href="/CadastroCliente" className='flex gap-2 items-center'>
+                                <i className="pi pi-plus"></i> 
+                                Cadastro Cliente
                             </Link>
                         </li>
                         <li>
-                            <Link href="/login">
-                                <i className="pi pi-user"></i> {/* Ícone para Login */}
-                                Login
+                            <Link href="/Documentacao" className='flex gap-2 items-center'>
+                                <i className="pi pi-book"></i> 
+                                Documentação
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/CadastroFeedback" className='flex gap-2 items-center'>
+                                <i className="pi pi-heart"></i> 
+                                Feedback
                             </Link>
                         </li>
                         <li onClick={handleMenuToggle}>
-                            <i className="pi pi-times"></i> {/* Ícone para Fechar */}
+                            <i className="pi pi-times"></i> 
                             Fechar
                         </li>
                     </ul>
