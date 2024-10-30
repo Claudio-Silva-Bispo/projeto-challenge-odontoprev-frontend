@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 type FormDataChangeHandler = (name: string, value: string) => void;
 
-export default function CadastroMedico() {
+export default function CadastroEspecialista() {
   const formRef = useRef<HTMLFormElement>(null);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({

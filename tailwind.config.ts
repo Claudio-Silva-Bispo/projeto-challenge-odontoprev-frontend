@@ -8,9 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'], // Adicione a fonte aqui
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primeira: "#484848"
       },
     },
   },

@@ -66,7 +66,7 @@ export default function CadastroCliente() {
       console.log('Enviando o formulário...', formData);
 
       // Validação dos campos obrigatórios
-      if (!formData.nome || !formData.telefone || !formData.email || !formData.cpf || !formData.senha) {
+      if (!formData.nome || !formData.telefone || !formData.email || !formData.cpf || !formData.genero || !formData.data_nascimento || !formData.senha) {
         alert('Por favor, preencha todos os campos obrigatórios.');
         return;
       }
@@ -192,6 +192,16 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ onChange }) => (
             <option value="masculino">Masculino</option>
             <option value="feminino">Feminino</option>
           </select>
+      </div>
+      <div>
+        <label htmlFor="data_nascimento" className="block text-sm leading-6 text-gray-600">Data nascimento</label>
+        <input
+          type="date"
+          name="data_nascimento"
+          id="data_nascimento"
+          className="block w-full rounded-md p-2"
+          onChange={(e) => onChange(e.target.name, e.target.value)}
+        />
       </div>
 
     </div>

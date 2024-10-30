@@ -1,6 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: bold;
+    color: #484848;
+}
+
+
 
 
 .layout-topbar {
@@ -36,4 +48,47 @@
 
 .sidebar li a:hover {
     background-color: #f0f0f0;
+}
+
+
+@keyframes highlight {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    70% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.animate-highlight {
+    animation: highlight 10s infinite;
+}
+
+@keyframes barHighlight {
+    0% {
+        opacity: 0;
+        height: 0;
+    }
+    10% {
+        opacity: 1;
+      
+    }
+    60% {
+        opacity: 1;
+       
+    }
+    100% {
+        opacity: 0;
+      
+    }
+}
+
+.bar-highlight {
+    animation: barHighlight 10s infinite;
 }

@@ -16,10 +16,11 @@ import 'primeicons/primeicons.css';
 import '../styles/layout/layout.scss';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/context/authContext';
+import MenuProjeto from '@/components/MenuProjeto';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const isLoginPage = router.pathname === '/Login'; // Corrigido para '/login' (tudo minúsculo)
+  const isLoginPage = router.pathname === '/Login';
 
   return (
     <PrimeReactProvider>
@@ -32,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     rel="stylesheet"
                     />
                 </Head>
-          <MainComponent isLoginPage={isLoginPage} Component={Component} pageProps={pageProps} />
+          <MainComponent isLoginPage={isLoginPage}  Component={Component} pageProps={pageProps} />
         </LayoutProvider>
       </AuthProvider>
     </PrimeReactProvider>
@@ -44,11 +45,11 @@ const MainComponent = ({ isLoginPage, Component, pageProps }: { isLoginPage: boo
   const { isAuthenticated } = useAuth();
   const router = useRouter();
 
-  // Redireciona para a página de login se não estiver autenticado, exceto para a rota /swagger
+  // Redireciona para a página de login se não estiver autenticado, exceto para a rota /swagger ou Cadastro(Hero)
   useEffect(() => {
-    const publicRoutes = ['/swagger']; // Adicione outras rotas públicas aqui, se necessário
+    const publicRoutes = ['/swagger', '/Hero', '/CadastroCliente',' /CadastroClinica', '/CadastroEspecialista', '/Projeto' ];
     if (!isAuthenticated && !isLoginPage && !publicRoutes.includes(router.pathname)) {
-      router.push('/Login'); // Corrigido para '/login' (tudo minúsculo)
+      router.push('/Login');
     }
   }, [isAuthenticated, isLoginPage, router]);
 
@@ -59,9 +60,13 @@ const MainComponent = ({ isLoginPage, Component, pageProps }: { isLoginPage: boo
     'layout-mobile-active': layoutState?.staticMenuMobileActive,
   });
 
+  // Verifica se a rota atual é '/Projeto' para exibir o MenuProjeto
+  const isProjetoPage = router.pathname === '/Projeto';
+
   return (
     <div className={containerClass}>
-      {!isLoginPage && <Menu />}
+      {/* Mostra MenuProjeto se estiver na rota '/Projeto', senão exibe o Menu normal */}
+      {!isLoginPage && (isProjetoPage ? <MenuProjeto /> : <Menu />)}
       <div className="layout-main-container">
         <div className="layout-main">
           <Component {...pageProps} />

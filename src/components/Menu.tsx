@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { classNames } from 'primereact/utils';
-import React, { forwardRef, useContext, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useContext, useImperativeHandle, useRef, useState, useEffect } from 'react';
 import { AppTopbarRef } from '@/types';
 import { LayoutContext } from '../context/layoutcontext';
 
@@ -11,6 +11,7 @@ const Menu = forwardRef<AppTopbarRef>((props, ref) => {
     const menubuttonRef = useRef(null);
     const topbarmenuRef = useRef(null);
     const topbarmenubuttonRef = useRef(null);
+    const sidebarRef = useRef<HTMLDivElement | null>(null); // Ref com o tipo HTMLDivElement
     const [sidebarVisible, setSidebarVisible] = useState(false);
 
     useImperativeHandle(ref, () => ({
@@ -24,10 +25,29 @@ const Menu = forwardRef<AppTopbarRef>((props, ref) => {
         onMenuToggle();
     };
 
+    // Close the sidebar when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+                setSidebarVisible(false);
+            }
+        };
+
+        if (sidebarVisible) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [sidebarVisible]);
+
     return (
         <div className="layout-topbar">
-            <Link href="/" className="layout-topbar-logo">
-                <span>DELFOS MACHINE</span>
+            <Link href="/Hero" className="layout-topbar-logo">
+                <img src="/assets/Logo/napkin-selection-tres.svg" alt="logo" className='w-full h-auto' />
             </Link>
 
             <button
@@ -57,7 +77,7 @@ const Menu = forwardRef<AppTopbarRef>((props, ref) => {
 
             {/* Sidebar */}
             {sidebarVisible && (
-                <div className="sidebar p-5 text-xl">
+                <div ref={sidebarRef} className="sidebar p-5 text-xl">
                     <ul>
                         <li >
                             <Link href="/" className='flex gap-2 items-center'>

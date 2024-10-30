@@ -12,6 +12,7 @@ import '../styles/login.module.css'
 
 // Implementar a lógica para Logar na página
 import { useAuth } from '@/context/authContext';
+import Link from 'next/link';
 
 
 const Login = () => {
@@ -28,10 +29,9 @@ const Login = () => {
 
         // Se a autenticação for bem-sucedida
         if (isAuthenticated) {
-            login(); // Chama a função de login do contexto
-            router.push('/'); // Redireciona para a página inicial após o login
+            login(); 
+            router.push('/');
         } else {
-            // Aqui você pode definir um estado de erro, se necessário
             console.error("Falha na autenticação"); // Simulação de falha. Escrever mais aqui.
         }
     };
@@ -48,10 +48,10 @@ const Login = () => {
                     style={{
                         borderRadius: '56px',
                         padding: '0.3rem',
-                        background: 'linear-gradient(180deg, #4CBEA2 10%, rgba(33, 150, 243, 0) 30%)'
+                        background: 'linear-gradient(180deg, #1e68e0 10%, rgba(33, 150, 243, 0) 30%)'
                     }}
                 >
-                    <div className="w-full surface-card py-8 px-5 sm:px-8" style={{ borderRadius: '53px'  }}>
+                    <div className="w-full surface-card py-8 px-5" style={{ borderRadius: '53px'  }}>
                         <div className="text-center mb-5">
 
                             <div className="text-900 text-3xl font-medium mb-3">Bem vindo</div>
@@ -68,7 +68,6 @@ const Login = () => {
                             className="w-full md:w-30rem mb-5 border"
                             style={{ padding: '1rem' }}
 
-                            // atualizar estado do email e receber informações
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             />
@@ -94,7 +93,7 @@ const Login = () => {
                                     />
                                     <label htmlFor="rememberme1">Gravar dados</label>
                                 </div>
-                                <a href='/AlterarDados' className="font-medium no-underline ml-2 text-right cursor-pointer text-green" style={{ color: '#4CBEA2' }}>
+                                <a href='/AlterarDados' className="font-medium no-underline ml-2 text-right cursor-pointer text-green" style={{ color: '#1e68e0' }}>
                                     Esqueceu a senha?
                                 </a>
                             </div>
@@ -102,7 +101,11 @@ const Login = () => {
                             className="w-full p-3 text-xl"
                             //onClick={() => router.push('/')}
                             onClick={handleLogin}
-                            style={{ backgroundColor: '#4CBEA2', color: '#ffffff', border:'none'}}></Button>
+                            style={{ backgroundColor: '#1e68e0', color: '#ffffff', border:'none'}}></Button>
+                        </div>
+
+                        <div className='text-center pt-10 text-xl'>
+                            <Link href={'/Hero'}>Não é cadastrado, clique aqui</Link>
                         </div>
                     </div>
                 </div>

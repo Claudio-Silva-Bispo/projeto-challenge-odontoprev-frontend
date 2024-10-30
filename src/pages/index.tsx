@@ -10,7 +10,6 @@ return (
             <div className="card">
                 <h5 className='text-5xl'>Gestão de Clientes e Parceiros</h5>
                 <div className='flex justify-center gap-10'>
-
                     <div className="flex justify-center mt-10">
                         <Link href="/PaginaLogadaCliente">
                             <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-sm">

@@ -52,8 +52,8 @@ const MenuConfiguracao = (props: AppConfigProps) => {
 
     return (
         <>
-            <button className="layout-config-button config-link" type="button" onClick={onConfigButtonClick}>
-                <i className="pi pi-cog"></i>
+            <button className="layout-config-button config-link bg-[#003EA6]" type="button" onClick={onConfigButtonClick}>
+                <i className="pi pi-cog bg-[#003EA6] w-full"></i>
             </button>
 
             <Sidebar visible={layoutState.configSidebarVisible} onHide={onConfigSidebarHide} position="right" className="layout-config-sidebar w-20rem">
